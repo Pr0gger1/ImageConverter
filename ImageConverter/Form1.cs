@@ -19,7 +19,7 @@ namespace ImageConverter
             InitializeComponent();
             ResolutionBox.Items.AddRange(resolutionIcon);
 
-            trackBar1.Scroll += trackBar1_Scroll;
+            CompRatioBar.Scroll += CompRatioBar_Scroll;
         }
 
         private void OpenFile_Click(object sender, EventArgs e)
@@ -120,9 +120,9 @@ namespace ImageConverter
             }
         }
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
+        private void CompRatioBar_Scroll(object sender, EventArgs e)
         {
-            SliderValue.Text = $"Степень сжатия: {trackBar1.Value}%";
+            SliderValue.Text = $"Степень сжатия: {CompRatioBar.Value}%";
         }
 
         private static Image ResizeImage(Image imgToResize, Size size)
@@ -132,7 +132,7 @@ namespace ImageConverter
             int origHeight = imgToResize.Height;
 
             //Calculate new resolution
-            float nPercent = 0;
+            float nPercent;
             float nPercentW = size.Width / (float)origWidth;
             float nPercentH = size.Height / (float)origHeight;
 
@@ -157,5 +157,4 @@ namespace ImageConverter
             return (Image)bmp;
         }
     }
-
 }

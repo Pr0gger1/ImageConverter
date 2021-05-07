@@ -42,7 +42,7 @@ namespace ImageConverter
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.CompRatioBar = new System.Windows.Forms.TrackBar();
             this.SliderValue = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.ImgBox)).BeginInit();
@@ -50,7 +50,7 @@ namespace ImageConverter
             this.ResolutionPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CompRatioBar)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -170,15 +170,15 @@ namespace ImageConverter
             this.flowLayoutPanel2.Size = new System.Drawing.Size(194, 38);
             this.flowLayoutPanel2.TabIndex = 2;
             // 
-            // trackBar1
+            // CompRatioBar
             // 
-            this.trackBar1.LargeChange = 10;
-            this.trackBar1.Location = new System.Drawing.Point(3, 39);
-            this.trackBar1.Maximum = 100;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(175, 37);
-            this.trackBar1.TabIndex = 7;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.CompRatioBar.LargeChange = 10;
+            this.CompRatioBar.Location = new System.Drawing.Point(3, 39);
+            this.CompRatioBar.Maximum = 100;
+            this.CompRatioBar.Name = "CompRatioBar";
+            this.CompRatioBar.Size = new System.Drawing.Size(175, 37);
+            this.CompRatioBar.TabIndex = 7;
+            this.CompRatioBar.Scroll += new System.EventHandler(this.CompRatioBar_Scroll);
             // 
             // SliderValue
             // 
@@ -197,7 +197,7 @@ namespace ImageConverter
             // 
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel1.Controls.Add(this.SliderValue);
-            this.flowLayoutPanel1.Controls.Add(this.trackBar1);
+            this.flowLayoutPanel1.Controls.Add(this.CompRatioBar);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(643, 352);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(175, 80);
@@ -221,7 +221,7 @@ namespace ImageConverter
             this.ResolutionPanel.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CompRatioBar)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -240,7 +240,7 @@ namespace ImageConverter
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox ResolutionBox;
         private System.Windows.Forms.Button OpenFile;
-        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TrackBar CompRatioBar;
         private System.Windows.Forms.Label SliderValue;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel ResolutionPanel;
