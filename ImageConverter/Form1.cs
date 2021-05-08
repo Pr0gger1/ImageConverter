@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using ImageEdit;
 
 namespace ImageConverter
 {
@@ -16,10 +15,11 @@ namespace ImageConverter
 
         public Form1()
         {
+            
             InitializeComponent();
             ResolutionBox.Items.AddRange(resolutionIcon);
 
-            CompRatioBar.Scroll += CompRatioBar_Scroll;
+            CompRatioBar.Scroll += CompRatioBar_Scroll;           
         }
 
         private void OpenFile_Click(object sender, EventArgs e)
@@ -50,6 +50,14 @@ namespace ImageConverter
 
         private void SaveTo_Click(object sender, EventArgs e)
         {
+            //if (ImgBox.Image != null)
+            //{
+            //    FolderBrowserDialog ChangeDirectory = new FolderBrowserDialog();
+            //    if (ChangeDirectory.ShowDialog() == DialogResult.OK)
+            //    {
+            //        string Path = ChangeDirectory.SelectedPath;
+            //        MessageBox.Show($"{Path}");
+            //    }
             if (ImgBox.Image != null)
             {
                 SaveFileDialog SaveFile = new SaveFileDialog
@@ -66,32 +74,32 @@ namespace ImageConverter
                     {
                         //System.Drawing.Image img = ImgBox.Image;
                         if (FileExtension.SelectedItem == "PNG")
-                        {                          
-                            ImgBox.Image.Save(SaveFile.FileName, System.Drawing.Imaging.ImageFormat.Png);                           
+                        {
+                            ImgBox.Image.Save(SaveFile.FileName, System.Drawing.Imaging.ImageFormat.Png);
                         }
                         else if (FileExtension.SelectedItem == "JPG")
                         {
-                            ImgBox.Image.Save(SaveFile.FileName, System.Drawing.Imaging.ImageFormat.Jpeg);                           
+                            ImgBox.Image.Save(SaveFile.FileName, System.Drawing.Imaging.ImageFormat.Jpeg);
                         }
                         else if (FileExtension.SelectedItem == "ICO")
                         {
                             int res_select;
-                            foreach(string res in resolutionIcon)
+                            foreach (string res in resolutionIcon)
                             {
                                 if (res == ResolutionBox.SelectedItem)
                                 {
-                                    if (res.Substring(2,1) != "x")
+                                    if (res.Substring(2, 1) != "x")
                                     {
                                         res_select = Convert.ToInt16(res.Substring(0, 3));
-
-                                        Image pic = ResizeImage(picture, new Size(res_select, res_select));
+                                        Image pic = Resizer.Change_Size_Img(picture, new Size(res_select, res_select));
+                                        //Image pic = ResizeImage(picture, new Size(res_select, res_select));
                                         pic.Save(SaveFile.FileName, System.Drawing.Imaging.ImageFormat.Icon);
                                     }
                                     else
                                     {
                                         res_select = Convert.ToInt16(res.Substring(0, 2));
 
-                                        Image pic = ResizeImage(picture, new Size(res_select, res_select));
+                                        Image pic = Resizer.Change_Size_Img(picture, new Size(res_select, res_select));
                                         pic.Save(SaveFile.FileName, System.Drawing.Imaging.ImageFormat.Icon);
                                     }
                                 }
@@ -105,7 +113,7 @@ namespace ImageConverter
                         MessageBox.Show("Невозможно сохранить изображение", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-            }   
+            }
         }
 
         private void FileExtension_SelectedIndexChanged(object sender, EventArgs e)
@@ -123,38 +131,6 @@ namespace ImageConverter
         private void CompRatioBar_Scroll(object sender, EventArgs e)
         {
             SliderValue.Text = $"Степень сжатия: {CompRatioBar.Value}%";
-        }
-
-        private static Image ResizeImage(Image imgToResize, Size size)
-        {
-            //Get width and height original image
-            int origWidth = imgToResize.Width;
-            int origHeight = imgToResize.Height;
-
-            //Calculate new resolution
-            float nPercent;
-            float nPercentW = size.Width / (float)origWidth;
-            float nPercentH = size.Height / (float)origHeight;
-
-            if (nPercentH < nPercentW)
-            {
-                nPercent = nPercentH;
-            }
-            else
-            {
-                nPercent = nPercentW;
-            }
-
-            int outWidth = (int)(origWidth * nPercent);
-            int outHeight = (int)(origHeight * nPercent);
-            Bitmap bmp = new Bitmap(outWidth, outHeight);
-            Graphics graph = Graphics.FromImage((Image)bmp);
-
-            graph.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            graph.DrawImage(imgToResize, 0, 0, outWidth, outHeight);
-            graph.Dispose();
-
-            return (Image)bmp;
         }
     }
 }

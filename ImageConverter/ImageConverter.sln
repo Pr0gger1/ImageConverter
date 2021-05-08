@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageConverter", "ImageConverter.csproj", "{3B7FF5A7-7F42-4DA8-8F0A-628EFD3DED01}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageEdit", "..\ResizeImage\ImageEdit.csproj", "{64352C73-B382-4DA3-BF48-6DF33990B0BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3B7FF5A7-7F42-4DA8-8F0A-628EFD3DED01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B7FF5A7-7F42-4DA8-8F0A-628EFD3DED01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B7FF5A7-7F42-4DA8-8F0A-628EFD3DED01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64352C73-B382-4DA3-BF48-6DF33990B0BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64352C73-B382-4DA3-BF48-6DF33990B0BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64352C73-B382-4DA3-BF48-6DF33990B0BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64352C73-B382-4DA3-BF48-6DF33990B0BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
