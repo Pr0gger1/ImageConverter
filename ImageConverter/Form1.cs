@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -10,8 +11,9 @@ namespace ImageConverter
 {
     public partial class Form1 : Form
     {
-        Bitmap picture = null;
-        private readonly string[] resolutionIcon = { "16x16", "32x32", "64x64", "128x128", "256x256", "512x512", "1024x1024" };
+        Bitmap Picture;
+        private readonly string[] resolutionIcon = { "16x16", "32x32", "64x64", "128x128", "256x256", "512x512" };
+        private readonly string[] extensions = { "ICO", "PNG", "JPG" };
 
         public Form1()
         {
@@ -19,7 +21,8 @@ namespace ImageConverter
             InitializeComponent();
             ResolutionBox.Items.AddRange(resolutionIcon);
 
-            CompRatioBar.Scroll += CompRatioBar_Scroll;           
+            CompRatioBar.Scroll += CompRatioBar_Scroll;
+            
         }
 
         private void OpenFile_Click(object sender, EventArgs e)
@@ -32,8 +35,8 @@ namespace ImageConverter
             {
                 try
                 {
-                    picture = new Bitmap(Image.FromFile(OpenFile.FileName));
-                    ImgBox.Image = picture;
+                    Picture = new Bitmap(Image.FromFile(OpenFile.FileName));
+                    ImgBox.Image = Picture;
                 }
                 catch
                 {
@@ -43,7 +46,7 @@ namespace ImageConverter
 
             if (ImgBox.Image != null)
             {
-                string[] extensions = { "ICO", "PNG", "JPG" };
+                
                 FileExtension.Items.AddRange(extensions);
             }
         }
@@ -52,12 +55,23 @@ namespace ImageConverter
         {
             //if (ImgBox.Image != null)
             //{
-            //    FolderBrowserDialog ChangeDirectory = new FolderBrowserDialog();
+            //    FolderBrowserDialog ChangeDirectory = new FolderBrowserDialog
+            //    {
+            //        Description = "Выберите папку для сохранения файла"
+            //    };
+
             //    if (ChangeDirectory.ShowDialog() == DialogResult.OK)
             //    {
             //        string Path = ChangeDirectory.SelectedPath;
-            //        MessageBox.Show($"{Path}");
+            //        MessageBox.Show($"{NameFile}");
+            //        ImgBox.Image.Save(Path + "/img.png", ImageFormat.Png);
             //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Вы не выбрали изображение", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+
             if (ImgBox.Image != null)
             {
                 SaveFileDialog SaveFile = new SaveFileDialog
@@ -66,13 +80,12 @@ namespace ImageConverter
                     OverwritePrompt = true,
                     CheckPathExists = true,
                     ShowHelp = true,
-                    Filter = "Image Files(*.PNG)|*.png|Image Files(*.JPG)|*.jpg|Image Files(*.ICO)|*.ico|All Files(*.*)|*.*"
+                    Filter = $"Image Files(*.{FileExtension.SelectedItem})|*.{(FileExtension.SelectedItem.ToString().ToLower())}"
                 };
                 if (SaveFile.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
-                        //System.Drawing.Image img = ImgBox.Image;
                         if (FileExtension.SelectedItem == "PNG")
                         {
                             ImgBox.Image.Save(SaveFile.FileName, System.Drawing.Imaging.ImageFormat.Png);
@@ -91,22 +104,21 @@ namespace ImageConverter
                                     if (res.Substring(2, 1) != "x")
                                     {
                                         res_select = Convert.ToInt16(res.Substring(0, 3));
-                                        Image pic = Resizer.Change_Size_Img(picture, new Size(res_select, res_select));
-                                        //Image pic = ResizeImage(picture, new Size(res_select, res_select));
+                                        Image pic = Resizer.Change_Size_Img(Picture, new Size(res_select, res_select));
                                         pic.Save(SaveFile.FileName, System.Drawing.Imaging.ImageFormat.Icon);
                                     }
+                                    
                                     else
                                     {
                                         res_select = Convert.ToInt16(res.Substring(0, 2));
 
-                                        Image pic = Resizer.Change_Size_Img(picture, new Size(res_select, res_select));
+                                        Image pic = Resizer.Change_Size_Img(Picture, new Size(res_select, res_select));
                                         pic.Save(SaveFile.FileName, System.Drawing.Imaging.ImageFormat.Icon);
                                     }
                                 }
                             }
                         }
                         MessageBox.Show("Успешно сконвертировано!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     }
                     catch
                     {

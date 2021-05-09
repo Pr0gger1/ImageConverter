@@ -30,24 +30,26 @@ namespace ImageConverter
         private void InitializeComponent()
         {
             this.OpenFile = new System.Windows.Forms.Button();
-            this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.SaveTo = new System.Windows.Forms.Button();
             this.ImgBox = new System.Windows.Forms.PictureBox();
             this.FileExtension = new System.Windows.Forms.ComboBox();
             this.FormatFilePanel = new System.Windows.Forms.Panel();
+            this.ConvetToPanel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.ResolutionPanel = new System.Windows.Forms.Panel();
             this.ResolutionBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.CompRatioBar = new System.Windows.Forms.TrackBar();
             this.SliderValue = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.SetFolderToSave = new System.Windows.Forms.FolderBrowserDialog();
+            this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.ImgBox)).BeginInit();
             this.FormatFilePanel.SuspendLayout();
+            this.ConvetToPanel.SuspendLayout();
             this.ResolutionPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -93,30 +95,49 @@ namespace ImageConverter
             this.FileExtension.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.FileExtension.FormattingEnabled = true;
             this.FileExtension.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.FileExtension.Location = new System.Drawing.Point(108, 45);
+            this.FileExtension.Location = new System.Drawing.Point(111, 8);
             this.FileExtension.Name = "FileExtension";
-            this.FileExtension.Size = new System.Drawing.Size(60, 21);
+            this.FileExtension.Size = new System.Drawing.Size(51, 21);
             this.FileExtension.TabIndex = 3;
             this.FileExtension.SelectedIndexChanged += new System.EventHandler(this.FileExtension_SelectedIndexChanged);
             // 
             // FormatFilePanel
             // 
             this.FormatFilePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FormatFilePanel.Controls.Add(this.ConvetToPanel);
             this.FormatFilePanel.Controls.Add(this.ResolutionPanel);
-            this.FormatFilePanel.Controls.Add(this.label1);
-            this.FormatFilePanel.Controls.Add(this.FileExtension);
-            this.FormatFilePanel.Location = new System.Drawing.Point(643, 454);
+            this.FormatFilePanel.Location = new System.Drawing.Point(643, 449);
             this.FormatFilePanel.Name = "FormatFilePanel";
-            this.FormatFilePanel.Size = new System.Drawing.Size(175, 75);
+            this.FormatFilePanel.Size = new System.Drawing.Size(175, 80);
             this.FormatFilePanel.TabIndex = 5;
+            // 
+            // ConvetToPanel
+            // 
+            this.ConvetToPanel.Controls.Add(this.label1);
+            this.ConvetToPanel.Controls.Add(this.FileExtension);
+            this.ConvetToPanel.Location = new System.Drawing.Point(3, 37);
+            this.ConvetToPanel.Name = "ConvetToPanel";
+            this.ConvetToPanel.Size = new System.Drawing.Size(167, 37);
+            this.ConvetToPanel.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(3, 8);
+            this.label1.Name = "label1";
+            this.label1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.label1.Size = new System.Drawing.Size(102, 23);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Конвертировать в:";
             // 
             // ResolutionPanel
             // 
             this.ResolutionPanel.Controls.Add(this.ResolutionBox);
             this.ResolutionPanel.Controls.Add(this.label2);
-            this.ResolutionPanel.Location = new System.Drawing.Point(6, 3);
+            this.ResolutionPanel.Location = new System.Drawing.Point(3, 3);
             this.ResolutionPanel.Name = "ResolutionPanel";
-            this.ResolutionPanel.Size = new System.Drawing.Size(162, 28);
+            this.ResolutionPanel.Size = new System.Drawing.Size(167, 28);
             this.ResolutionPanel.TabIndex = 10;
             this.ResolutionPanel.Visible = false;
             // 
@@ -133,23 +154,13 @@ namespace ImageConverter
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(-3, 1);
+            this.label2.Location = new System.Drawing.Point(3, 1);
             this.label2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.label2.Size = new System.Drawing.Size(73, 23);
             this.label2.TabIndex = 4;
             this.label2.Text = "Разрешение:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 43);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.label1.Size = new System.Drawing.Size(99, 23);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Конвертировать в";
             // 
             // groupBox1
             // 
@@ -217,7 +228,8 @@ namespace ImageConverter
             this.Text = "Image Converter";
             ((System.ComponentModel.ISupportInitialize)(this.ImgBox)).EndInit();
             this.FormatFilePanel.ResumeLayout(false);
-            this.FormatFilePanel.PerformLayout();
+            this.ConvetToPanel.ResumeLayout(false);
+            this.ConvetToPanel.PerformLayout();
             this.ResolutionPanel.ResumeLayout(false);
             this.ResolutionPanel.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -230,7 +242,6 @@ namespace ImageConverter
         }
 
         #endregion
-        private System.Windows.Forms.SaveFileDialog SaveFileDialog;
         private System.Windows.Forms.OpenFileDialog OpenFileDialog;
         private System.Windows.Forms.Button SaveTo;
         private System.Windows.Forms.PictureBox ImgBox;
@@ -247,6 +258,8 @@ namespace ImageConverter
         private System.Windows.Forms.Panel ResolutionPanel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.FolderBrowserDialog SetFolderToSave;
+        private System.Windows.Forms.SaveFileDialog SaveFileDialog;
+        private System.Windows.Forms.Panel ConvetToPanel;
     }
 }
 
