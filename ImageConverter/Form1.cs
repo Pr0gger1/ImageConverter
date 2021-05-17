@@ -1,19 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using ImageEdit;
+using ImageMagick;
 
 namespace ImageConverter
 {
     public partial class Form1 : Form
     {
         Bitmap Picture;
-        private readonly string[] resolutionIcon = { "16x16", "32x32", "64x64", "128x128", "256x256", "512x512" };
-        private readonly string[] extensions = { "ICO", "PNG", "JPG" };
+        string ImgPath;
+
+        private readonly string[] resolutionIcon = { "16x16", "32x32", "64x64", "128x128", "256x256" };
+        private readonly string[] extensions = { "ICO", "PNG", "JPG", "BMP" };
 
         public Form1()
         {
@@ -22,20 +22,26 @@ namespace ImageConverter
             ResolutionBox.Items.AddRange(resolutionIcon);
 
             CompRatioBar.Scroll += CompRatioBar_Scroll;
-            
+
+            if (CompRatioBar.Value != 0)
+            {
+                int Compress_ratio = CompRatioBar.Value;
+            }
         }
 
         private void OpenFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog OpenFile = new OpenFileDialog
             {
-                Filter = "Image Files(*.PNG;*.JPG;*.BMP;*.WEBP)|*.PNG;*.JPG;*.BMP;*.WEBP|All files(*.*)|*.*"
+                Filter = "Image Files(*.PNG;*.JPG;*.BMP;*.ICO)|*.PNG;*.JPG;*.BMP;*.ICO|All files(*.*)|*.*"
             };
             if (OpenFile.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
+
                     Picture = new Bitmap(Image.FromFile(OpenFile.FileName));
+                    ImgPath = OpenFile.FileName;
                     ImgBox.Image = Picture;
                 }
                 catch
@@ -44,80 +50,74 @@ namespace ImageConverter
                 }
             }
 
-            if (ImgBox.Image != null)
-            {
-                
+            if (ImgBox.Image != null && FileExtension.Items.Count == 0)
+            {           
                 FileExtension.Items.AddRange(extensions);
             }
         }
 
         private void SaveTo_Click(object sender, EventArgs e)
         {
-            //if (ImgBox.Image != null)
-            //{
-            //    FolderBrowserDialog ChangeDirectory = new FolderBrowserDialog
-            //    {
-            //        Description = "Выберите папку для сохранения файла"
-            //    };
-
-            //    if (ChangeDirectory.ShowDialog() == DialogResult.OK)
-            //    {
-            //        string Path = ChangeDirectory.SelectedPath;
-            //        MessageBox.Show($"{NameFile}");
-            //        ImgBox.Image.Save(Path + "/img.png", ImageFormat.Png);
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Вы не выбрали изображение", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
-
             if (ImgBox.Image != null)
             {
-                SaveFileDialog SaveFile = new SaveFileDialog
+                SaveFileDialog SaveFile = new SaveFileDialog()
                 {
                     Title = "Сохранить картинку как",
                     OverwritePrompt = true,
                     CheckPathExists = true,
                     ShowHelp = true,
                     Filter = $"Image Files(*.{FileExtension.SelectedItem})|*.{(FileExtension.SelectedItem.ToString().ToLower())}"
-                };
+            };
+         
                 if (SaveFile.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
-                        if (FileExtension.SelectedItem == "PNG")
+                        var Extension_value = FileExtension.SelectedItem;
+                        switch (Extension_value)
                         {
-                            ImgBox.Image.Save(SaveFile.FileName, System.Drawing.Imaging.ImageFormat.Png);
-                        }
-                        else if (FileExtension.SelectedItem == "JPG")
-                        {
-                            ImgBox.Image.Save(SaveFile.FileName, System.Drawing.Imaging.ImageFormat.Jpeg);
-                        }
-                        else if (FileExtension.SelectedItem == "ICO")
-                        {
-                            int res_select;
-                            foreach (string res in resolutionIcon)
-                            {
-                                if (res == ResolutionBox.SelectedItem)
-                                {
-                                    if (res.Substring(2, 1) != "x")
-                                    {
-                                        res_select = Convert.ToInt16(res.Substring(0, 3));
-                                        Image pic = Resizer.Change_Size_Img(Picture, new Size(res_select, res_select));
-                                        pic.Save(SaveFile.FileName, System.Drawing.Imaging.ImageFormat.Icon);
-                                    }
-                                    
-                                    else
-                                    {
-                                        res_select = Convert.ToInt16(res.Substring(0, 2));
+                            case "PNG":
+                                ImgBox.Image.Save(SaveFile.FileName, ImageFormat.Png);
+                                break;
 
-                                        Image pic = Resizer.Change_Size_Img(Picture, new Size(res_select, res_select));
-                                        pic.Save(SaveFile.FileName, System.Drawing.Imaging.ImageFormat.Icon);
+                            case "JPG":
+                                ImgBox.Image.Save(SaveFile.FileName, ImageFormat.Jpeg);
+                                break;
+
+                            case "BMP":
+                                ImgBox.Image.Save(SaveFile.FileName, ImageFormat.Bmp);
+                                break;
+
+                            case "ICO":
+                                int res_selectXY;
+
+                                foreach (var res in resolutionIcon) //Brute force "16x16", "32x32", "64x64", "128x128", "256x256"
+                                {
+                                    if (res == ResolutionBox.SelectedItem.ToString() && ResolutionBox.SelectedItem != null)
+                                    {
+                                        if (res.Substring(2, 1) != "x") //if third element of array of resolution != 'x' (128x128 == True)
+                                        {
+                                            res_selectXY = Convert.ToInt16(res.Substring(0, 3)); //Parsing third-digit resolution (input = "128x128" => output = 128)
+
+                                            using (MagickImage Ico = Image_ConvertTO.Ico(ImgPath, res_selectXY))
+                                            {
+                                                Ico.Write(SaveFile.FileName);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            res_selectXY = Convert.ToInt16(res.Substring(0, 2)); //Parsing second-digit resolution (input = "64x64" => output = 64)
+
+                                            using (MagickImage Ico = Image_ConvertTO.Ico(ImgPath, res_selectXY))
+                                            {
+                                                Ico.Write(SaveFile.FileName);
+                                            }
+                                        }
                                     }
                                 }
-                            }
+                                break;
                         }
+                      
                         MessageBox.Show("Успешно сконвертировано!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch
