@@ -101,9 +101,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\ResizeImage\ImageEdit.csproj">
       <Project>{64352c73-b382-4da3-bf48-6df33990b0bb}</Project>
       <Name>ImageEdit</Name>

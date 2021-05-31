@@ -45,7 +45,6 @@ namespace ImageConverter
             this.CompRatioBar = new System.Windows.Forms.TrackBar();
             this.SliderValue = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.SetFolderToSave = new System.Windows.Forms.FolderBrowserDialog();
             this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.ImgBox)).BeginInit();
             this.FormatFilePanel.SuspendLayout();
@@ -257,7 +256,6 @@ namespace ImageConverter
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel ResolutionPanel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.FolderBrowserDialog SetFolderToSave;
         private System.Windows.Forms.SaveFileDialog SaveFileDialog;
         private System.Windows.Forms.Panel ConvetToPanel;
     }
