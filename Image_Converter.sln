@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31313.79
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Image_Converter", "Image_Converter.csproj", "{217DF891-E5D6-4CCF-8D6F-5CCFD090286B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageEditor", "..\ImageEdit\ImageEditor.csproj", "{EA9676DA-F8A2-4A9A-8FDD-49D527E2E6FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{217DF891-E5D6-4CCF-8D6F-5CCFD090286B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{217DF891-E5D6-4CCF-8D6F-5CCFD090286B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{217DF891-E5D6-4CCF-8D6F-5CCFD090286B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{217DF891-E5D6-4CCF-8D6F-5CCFD090286B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA9676DA-F8A2-4A9A-8FDD-49D527E2E6FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA9676DA-F8A2-4A9A-8FDD-49D527E2E6FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA9676DA-F8A2-4A9A-8FDD-49D527E2E6FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA9676DA-F8A2-4A9A-8FDD-49D527E2E6FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8D5167F4-F340-47DE-BA3D-6A2C614F19FD}
+	EndGlobalSection
+EndGlobal
