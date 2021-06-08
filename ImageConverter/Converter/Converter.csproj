@@ -7,8 +7,8 @@
     <ProjectGuid>{64352C73-B382-4DA3-BF48-6DF33990B0BB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ResizeImage</RootNamespace>
-    <AssemblyName>ResizeImage</AssemblyName>
+    <RootNamespace>ImgConvert</RootNamespace>
+    <AssemblyName>ImgConvert</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Image_Changer.cs" />
+    <Compile Include="Image_Converter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
