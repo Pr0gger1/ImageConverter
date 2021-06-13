@@ -33,6 +33,7 @@ namespace ImageEditor
             this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.Functional_Tab = new System.Windows.Forms.TabControl();
             this.Convert_Img_Page = new System.Windows.Forms.TabPage();
+            this.txtPathFile = new System.Windows.Forms.TextBox();
             this.ConvertTo_Panel = new System.Windows.Forms.Panel();
             this.ImgExtension = new System.Windows.Forms.ComboBox();
             this.ConvertTo_lbl = new System.Windows.Forms.Label();
@@ -44,26 +45,24 @@ namespace ImageEditor
             this.ConvertSettings_Panel = new System.Windows.Forms.Panel();
             this.SelectOneFile_radbtn = new System.Windows.Forms.RadioButton();
             this.SelectMultipleFiles_radbtn = new System.Windows.Forms.RadioButton();
-            this.txtPathFile = new System.Windows.Forms.TextBox();
             this.Edit_Img_Page = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Quality_Panel = new System.Windows.Forms.Panel();
+            this.SliderValue = new System.Windows.Forms.Label();
             this.Compression_ratio_bar = new System.Windows.Forms.TrackBar();
             this.PictureBox = new System.Windows.Forms.PictureBox();
             this.FolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.Main_Buttons_Panel = new System.Windows.Forms.Panel();
             this.OpenFile_btn = new System.Windows.Forms.Button();
             this.SaveImg_btn = new System.Windows.Forms.Button();
-            this.SliderValue = new System.Windows.Forms.Label();
             this.Functional_Tab.SuspendLayout();
             this.Convert_Img_Page.SuspendLayout();
             this.ConvertTo_Panel.SuspendLayout();
             this.ChangeResolutionIcon_Panel.SuspendLayout();
             this.Edit_Img_Page.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.Quality_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Compression_ratio_bar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
-            this.panel2.SuspendLayout();
+            this.Main_Buttons_Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // Functional_Tab
@@ -97,8 +96,19 @@ namespace ImageEditor
             this.Convert_Img_Page.Text = "Конвертация изображения";
             this.Convert_Img_Page.UseVisualStyleBackColor = true;
             // 
+            // txtPathFile
+            // 
+            this.txtPathFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPathFile.Location = new System.Drawing.Point(13, 40);
+            this.txtPathFile.Name = "txtPathFile";
+            this.txtPathFile.Size = new System.Drawing.Size(349, 20);
+            this.txtPathFile.TabIndex = 2;
+            // 
             // ConvertTo_Panel
             // 
+            this.ConvertTo_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ConvertTo_Panel.AutoSize = true;
             this.ConvertTo_Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.ConvertTo_Panel.Controls.Add(this.ImgExtension);
@@ -139,6 +149,8 @@ namespace ImageEditor
             // 
             // ChangeResolutionIcon_Panel
             // 
+            this.ChangeResolutionIcon_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ChangeResolutionIcon_Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.ChangeResolutionIcon_Panel.Controls.Add(this.SizeY);
             this.ChangeResolutionIcon_Panel.Controls.Add(this.label2);
@@ -169,6 +181,7 @@ namespace ImageEditor
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(281, 11);
@@ -218,7 +231,7 @@ namespace ImageEditor
             // 
             this.SelectOneFile_radbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SelectOneFile_radbtn.AutoSize = true;
-            this.SelectOneFile_radbtn.Location = new System.Drawing.Point(218, 17);
+            this.SelectOneFile_radbtn.Location = new System.Drawing.Point(217, 17);
             this.SelectOneFile_radbtn.Name = "SelectOneFile_radbtn";
             this.SelectOneFile_radbtn.Size = new System.Drawing.Size(149, 17);
             this.SelectOneFile_radbtn.TabIndex = 1;
@@ -240,20 +253,9 @@ namespace ImageEditor
             this.SelectMultipleFiles_radbtn.UseVisualStyleBackColor = true;
             this.SelectMultipleFiles_radbtn.CheckedChanged += new System.EventHandler(this.SelectMultipleFiles_radbtn_CheckedChanged);
             // 
-            // txtPathFile
-            // 
-            this.txtPathFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPathFile.Location = new System.Drawing.Point(13, 40);
-            this.txtPathFile.Name = "txtPathFile";
-            this.txtPathFile.Size = new System.Drawing.Size(349, 20);
-            this.txtPathFile.TabIndex = 2;
-            // 
             // Edit_Img_Page
             // 
-            this.Edit_Img_Page.Controls.Add(this.SliderValue);
-            this.Edit_Img_Page.Controls.Add(this.panel1);
-            this.Edit_Img_Page.Controls.Add(this.Compression_ratio_bar);
+            this.Edit_Img_Page.Controls.Add(this.Quality_Panel);
             this.Edit_Img_Page.Controls.Add(this.PictureBox);
             this.Edit_Img_Page.Location = new System.Drawing.Point(4, 22);
             this.Edit_Img_Page.Name = "Edit_Img_Page";
@@ -263,33 +265,35 @@ namespace ImageEditor
             this.Edit_Img_Page.Text = "Изменение изображения";
             this.Edit_Img_Page.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // Quality_Panel
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(6, 312);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(364, 27);
-            this.panel1.TabIndex = 3;
+            this.Quality_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Quality_Panel.Controls.Add(this.SliderValue);
+            this.Quality_Panel.Controls.Add(this.Compression_ratio_bar);
+            this.Quality_Panel.Location = new System.Drawing.Point(318, 6);
+            this.Quality_Panel.Name = "Quality_Panel";
+            this.Quality_Panel.Size = new System.Drawing.Size(55, 284);
+            this.Quality_Panel.TabIndex = 5;
             // 
-            // button1
+            // SliderValue
             // 
-            this.button1.Location = new System.Drawing.Point(288, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(71, 20);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.SliderValue.AutoSize = true;
+            this.SliderValue.Location = new System.Drawing.Point(3, 0);
+            this.SliderValue.Name = "SliderValue";
+            this.SliderValue.Size = new System.Drawing.Size(54, 26);
+            this.SliderValue.TabIndex = 4;
+            this.SliderValue.Text = "Качество\r\n    100%";
             // 
             // Compression_ratio_bar
             // 
             this.Compression_ratio_bar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Compression_ratio_bar.Location = new System.Drawing.Point(329, 35);
+            this.Compression_ratio_bar.Location = new System.Drawing.Point(11, 29);
             this.Compression_ratio_bar.Maximum = 100;
             this.Compression_ratio_bar.Name = "Compression_ratio_bar";
             this.Compression_ratio_bar.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.Compression_ratio_bar.Size = new System.Drawing.Size(37, 229);
+            this.Compression_ratio_bar.Size = new System.Drawing.Size(37, 252);
             this.Compression_ratio_bar.TabIndex = 1;
             this.Compression_ratio_bar.TickStyle = System.Windows.Forms.TickStyle.Both;
             this.Compression_ratio_bar.Value = 100;
@@ -297,30 +301,33 @@ namespace ImageEditor
             // 
             // PictureBox
             // 
-            this.PictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.PictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PictureBox.Location = new System.Drawing.Point(6, 6);
             this.PictureBox.Name = "PictureBox";
-            this.PictureBox.Size = new System.Drawing.Size(258, 258);
+            this.PictureBox.Size = new System.Drawing.Size(306, 287);
             this.PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PictureBox.TabIndex = 0;
             this.PictureBox.TabStop = false;
             // 
-            // panel2
+            // Main_Buttons_Panel
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.OpenFile_btn);
-            this.panel2.Controls.Add(this.SaveImg_btn);
-            this.panel2.Location = new System.Drawing.Point(4, 317);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(376, 41);
-            this.panel2.TabIndex = 11;
+            this.Main_Buttons_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Main_Buttons_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Main_Buttons_Panel.Controls.Add(this.OpenFile_btn);
+            this.Main_Buttons_Panel.Controls.Add(this.SaveImg_btn);
+            this.Main_Buttons_Panel.Location = new System.Drawing.Point(4, 317);
+            this.Main_Buttons_Panel.Name = "Main_Buttons_Panel";
+            this.Main_Buttons_Panel.Size = new System.Drawing.Size(376, 41);
+            this.Main_Buttons_Panel.TabIndex = 11;
             // 
             // OpenFile_btn
             // 
-            this.OpenFile_btn.Enabled = false;
+            this.OpenFile_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OpenFile_btn.Location = new System.Drawing.Point(279, 6);
             this.OpenFile_btn.Name = "OpenFile_btn";
             this.OpenFile_btn.Size = new System.Drawing.Size(88, 28);
@@ -331,6 +338,7 @@ namespace ImageEditor
             // 
             // SaveImg_btn
             // 
+            this.SaveImg_btn.Enabled = false;
             this.SaveImg_btn.Location = new System.Drawing.Point(7, 6);
             this.SaveImg_btn.Name = "SaveImg_btn";
             this.SaveImg_btn.Size = new System.Drawing.Size(75, 28);
@@ -339,21 +347,12 @@ namespace ImageEditor
             this.SaveImg_btn.UseVisualStyleBackColor = true;
             this.SaveImg_btn.Click += new System.EventHandler(this.SaveImg_btn_Click);
             // 
-            // SliderValue
-            // 
-            this.SliderValue.AutoSize = true;
-            this.SliderValue.Location = new System.Drawing.Point(319, 6);
-            this.SliderValue.Name = "SliderValue";
-            this.SliderValue.Size = new System.Drawing.Size(54, 26);
-            this.SliderValue.TabIndex = 4;
-            this.SliderValue.Text = "Качество\r\n    100%";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 361);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.Main_Buttons_Panel);
             this.Controls.Add(this.Functional_Tab);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(800, 800);
@@ -368,11 +367,11 @@ namespace ImageEditor
             this.ChangeResolutionIcon_Panel.ResumeLayout(false);
             this.ChangeResolutionIcon_Panel.PerformLayout();
             this.Edit_Img_Page.ResumeLayout(false);
-            this.Edit_Img_Page.PerformLayout();
-            this.panel1.ResumeLayout(false);
+            this.Quality_Panel.ResumeLayout(false);
+            this.Quality_Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Compression_ratio_bar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).EndInit();
-            this.panel2.ResumeLayout(false);
+            this.Main_Buttons_Panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -399,11 +398,12 @@ namespace ImageEditor
         private System.Windows.Forms.PictureBox PictureBox;
         private System.Windows.Forms.TrackBar Compression_ratio_bar;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel panel2;
+
+        private System.Windows.Forms.Panel Main_Buttons_Panel;
         private System.Windows.Forms.Button OpenFile_btn;
         private System.Windows.Forms.Button SaveImg_btn;
         private System.Windows.Forms.Label SliderValue;
+        private System.Windows.Forms.Panel Quality_Panel;
     }
 }
 

@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 using System.IO;
-using System.Text;
 using Converter;
 using Compressing;
 
@@ -32,6 +31,7 @@ namespace ImageEditor
                     {
                         if (OpenFolder.ShowDialog() == DialogResult.OK)
                         {
+                            SaveImg_btn.Enabled = true;
                             string images_directory = OpenFolder.SelectedPath;
                             txtPathFile.Text = OpenFolder.SelectedPath;
 
@@ -101,13 +101,13 @@ namespace ImageEditor
                     OpenFile.Filter = "Image Files(*.JPG)|*.JPG";
                     if (OpenFile.ShowDialog() == DialogResult.OK)
                     {
+                        SaveImg_btn.Enabled = true;
                         image_directory = OpenFile.FileName;
                         Picture = new Bitmap(image_directory);
                         PictureBox.Image = Picture;
                     }
                 }
-            }
-            
+            }  
         }
 
         private void SaveImg_btn_Click(object sender, EventArgs e)
@@ -128,15 +128,18 @@ namespace ImageEditor
                                 case "PNG":
                                     ImgFormat.ToPng(image_directory, SaveFile.FileName);
                                     break;
-                                case "ICO":
 
+                                case "ICO":
                                     break;
+
                                 case "JPG":
                                     ImgFormat.ToJpg(image_directory, SaveFile.FileName);
                                     break;
+
                                 case "BMP":
                                     ImgFormat.ToBmp(image_directory, SaveFile.FileName);
                                     break;
+
                                 case "TIFF":
                                     ImgFormat.ToTiff(image_directory, SaveFile.FileName);
                                     break;
@@ -153,8 +156,6 @@ namespace ImageEditor
                 {
                     Compress_Image.Compress(image_directory, Compression_ratio_bar.Value);
                 }
-                
-
             }
         }
         //private void OpenFile_Click(object sender, EventArgs e)
