@@ -70,9 +70,6 @@
   <ItemGroup>
     <Compile Include="Compress_Image.cs" />
     <Compile Include="Converter.cs" />
-    <Compile Include="DropZone_Behaviour.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
