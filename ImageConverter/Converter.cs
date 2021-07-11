@@ -1,47 +1,52 @@
 ﻿using System;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
+using ImageMagick;
 
-
-namespace Converter
+namespace ImageEditor
 {
     public class ImgFormat
     {
-        public static void ToIco()
+        public static void ToIco(string filename, string save_to_dir, ushort size)
         {
-
+            using (MagickImage picture = new MagickImage(filename))
+            {
+                picture.Resize(size, size);
+                picture.Write(save_to_dir + "_converted.ico", MagickFormat.Ico);
+            }
         }
         public static void ToPng(string filename, string save_to_dir)
         {
-            using (Bitmap picture = new Bitmap(filename))
+            using (MagickImage picture = new MagickImage(filename))
             {
-                picture.Save(save_to_dir, ImageFormat.Png);
-            }   
+                picture.Write(save_to_dir + "_converted.png", MagickFormat.Png);
+            }
         }
         public static void ToJpg(string filename, string save_to_dir)
         {
-            using (Bitmap picture = new Bitmap(filename))
+            using (MagickImage picture = new MagickImage(filename))
             {
-                picture.Save(save_to_dir, ImageFormat.Jpeg);
+                picture.Write(save_to_dir + "_converted.jpg", MagickFormat.Jpg);
             } 
         }
         public static void ToBmp(string filename, string save_to_dir)
         {
-            using(Bitmap picture = new Bitmap(filename))
+            using(MagickImage picture = new MagickImage(filename))
             {
-                picture.Save(save_to_dir, ImageFormat.Bmp);
+                picture.Write(save_to_dir + "_converted.bmp", MagickFormat.Bmp);
             }  
         }
         public static void ToTiff(string filename, string save_to_dir)
         {
-            using(Bitmap picture = new Bitmap(filename))
+            using(MagickImage picture = new MagickImage(filename))
             {
-                picture.Save(save_to_dir, ImageFormat.Tiff);
+                picture.Write(save_to_dir + "_converted.tiff", MagickFormat.Tiff);
             }  
         }
-
-            
+        public static void ToSvg(string filename, string save_to_dir)
+        {
+            using(MagickImage picture = new MagickImage(filename))
+            {
+                picture.Write(save_to_dir + "_converted.svg", MagickFormat.Svg);
+            }
+        }
     }
-
 }
