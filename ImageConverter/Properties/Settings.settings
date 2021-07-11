@@ -1,7 +1,12 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ImageEditor.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ConvertToExt" Type="System.String" Scope="User">
+      <Value Profile="(Default)">JPG</Value>
+    </Setting>
+    <Setting Name="ResolutionIcon" Type="System.UInt16" Scope="User">
+      <Value Profile="(Default)">128</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>
