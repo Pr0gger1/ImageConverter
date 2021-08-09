@@ -29,7 +29,8 @@ namespace ImageEditor
         /// </summary>
         private void InitializeComponent()
         {
-            this.OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgramForm));
             this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.Convert_Img_Page = new System.Windows.Forms.TabPage();
@@ -44,26 +45,27 @@ namespace ImageEditor
             this.sizeX = new System.Windows.Forms.ComboBox();
             this.ConvertSettings_Panel = new System.Windows.Forms.Panel();
             this.Edit_Img_Page = new System.Windows.Forms.TabPage();
+            this.PictureBox = new System.Windows.Forms.PictureBox();
             this.DropZone2 = new System.Windows.Forms.Panel();
             this.TitleDrop2 = new System.Windows.Forms.Label();
             this.Quality_Panel = new System.Windows.Forms.Panel();
             this.SliderValue = new System.Windows.Forms.Label();
             this.Compression_ratio_bar = new System.Windows.Forms.TrackBar();
-            this.PictureBox = new System.Windows.Forms.PictureBox();
-            this.FolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.Main_Buttons_Panel = new System.Windows.Forms.Panel();
+            this.Access_compress_lbl = new System.Windows.Forms.Label();
             this.ClearDropZone_btn = new System.Windows.Forms.Button();
             this.SaveImg_btn = new System.Windows.Forms.Button();
+            this.ImageList = new System.Windows.Forms.ImageList(this.components);
             this.TabControl.SuspendLayout();
             this.Convert_Img_Page.SuspendLayout();
             this.DropZone.SuspendLayout();
             this.ConvertTo_Panel.SuspendLayout();
             this.ChangeResolutionIcon_Panel.SuspendLayout();
             this.Edit_Img_Page.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
             this.DropZone2.SuspendLayout();
             this.Quality_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Compression_ratio_bar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
             this.Main_Buttons_Panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -235,9 +237,9 @@ namespace ImageEditor
             // 
             // Edit_Img_Page
             // 
+            this.Edit_Img_Page.Controls.Add(this.PictureBox);
             this.Edit_Img_Page.Controls.Add(this.DropZone2);
             this.Edit_Img_Page.Controls.Add(this.Quality_Panel);
-            this.Edit_Img_Page.Controls.Add(this.PictureBox);
             this.Edit_Img_Page.Location = new System.Drawing.Point(4, 22);
             this.Edit_Img_Page.Name = "Edit_Img_Page";
             this.Edit_Img_Page.Padding = new System.Windows.Forms.Padding(3);
@@ -245,6 +247,16 @@ namespace ImageEditor
             this.Edit_Img_Page.TabIndex = 1;
             this.Edit_Img_Page.Text = "Изменение изображения";
             this.Edit_Img_Page.UseVisualStyleBackColor = true;
+            // 
+            // PictureBox
+            // 
+            this.PictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PictureBox.Location = new System.Drawing.Point(6, 3);
+            this.PictureBox.Name = "PictureBox";
+            this.PictureBox.Size = new System.Drawing.Size(705, 391);
+            this.PictureBox.TabIndex = 8;
+            this.PictureBox.TabStop = false;
             // 
             // DropZone2
             // 
@@ -302,37 +314,32 @@ namespace ImageEditor
             this.Compression_ratio_bar.Maximum = 100;
             this.Compression_ratio_bar.Name = "Compression_ratio_bar";
             this.Compression_ratio_bar.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.Compression_ratio_bar.Size = new System.Drawing.Size(37, 419);
+            this.Compression_ratio_bar.Size = new System.Drawing.Size(45, 419);
             this.Compression_ratio_bar.TabIndex = 1;
             this.Compression_ratio_bar.TickStyle = System.Windows.Forms.TickStyle.Both;
             this.Compression_ratio_bar.Value = 100;
             this.Compression_ratio_bar.Scroll += new System.EventHandler(this.Compression_ratio_bar_Scroll);
-            // 
-            // PictureBox
-            // 
-            this.PictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PictureBox.Location = new System.Drawing.Point(6, 6);
-            this.PictureBox.Name = "PictureBox";
-            this.PictureBox.Size = new System.Drawing.Size(706, 388);
-            this.PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PictureBox.TabIndex = 0;
-            this.PictureBox.TabStop = false;
             // 
             // Main_Buttons_Panel
             // 
             this.Main_Buttons_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Main_Buttons_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Main_Buttons_Panel.Controls.Add(this.Access_compress_lbl);
             this.Main_Buttons_Panel.Controls.Add(this.ClearDropZone_btn);
             this.Main_Buttons_Panel.Controls.Add(this.SaveImg_btn);
             this.Main_Buttons_Panel.Location = new System.Drawing.Point(4, 484);
             this.Main_Buttons_Panel.Name = "Main_Buttons_Panel";
             this.Main_Buttons_Panel.Size = new System.Drawing.Size(776, 41);
             this.Main_Buttons_Panel.TabIndex = 11;
+            // 
+            // Access_compress_lbl
+            // 
+            this.Access_compress_lbl.AutoSize = true;
+            this.Access_compress_lbl.Location = new System.Drawing.Point(345, 14);
+            this.Access_compress_lbl.Name = "Access_compress_lbl";
+            this.Access_compress_lbl.Size = new System.Drawing.Size(0, 13);
+            this.Access_compress_lbl.TabIndex = 7;
             // 
             // ClearDropZone_btn
             // 
@@ -357,6 +364,12 @@ namespace ImageEditor
             this.SaveImg_btn.UseVisualStyleBackColor = true;
             this.SaveImg_btn.Click += new System.EventHandler(this.SaveImg_btn_Click);
             // 
+            // ImageList
+            // 
+            this.ImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.ImageList.ImageSize = new System.Drawing.Size(256, 256);
+            this.ImageList.TransparentColor = System.Drawing.Color.Transparent;
+            // 
             // ProgramForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,6 +377,7 @@ namespace ImageEditor
             this.ClientSize = new System.Drawing.Size(784, 528);
             this.Controls.Add(this.Main_Buttons_Panel);
             this.Controls.Add(this.TabControl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1000, 800);
             this.MinimumSize = new System.Drawing.Size(400, 400);
@@ -380,18 +394,18 @@ namespace ImageEditor
             this.ChangeResolutionIcon_Panel.ResumeLayout(false);
             this.ChangeResolutionIcon_Panel.PerformLayout();
             this.Edit_Img_Page.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).EndInit();
             this.DropZone2.ResumeLayout(false);
             this.Quality_Panel.ResumeLayout(false);
             this.Quality_Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Compression_ratio_bar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).EndInit();
             this.Main_Buttons_Panel.ResumeLayout(false);
+            this.Main_Buttons_Panel.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.OpenFileDialog OpenFileDialog;
         private System.Windows.Forms.SaveFileDialog SaveFileDialog;
         private System.Windows.Forms.TabControl TabControl;
         private System.Windows.Forms.TabPage Convert_Img_Page;
@@ -404,8 +418,6 @@ namespace ImageEditor
         private System.Windows.Forms.Panel ChangeResolutionIcon_Panel;
         private System.Windows.Forms.Label Resolution_lbl;
         private System.Windows.Forms.ComboBox sizeX;
-        private System.Windows.Forms.FolderBrowserDialog FolderBrowserDialog;
-        private System.Windows.Forms.PictureBox PictureBox;
         private System.Windows.Forms.TrackBar Compression_ratio_bar;
         private System.Windows.Forms.Panel Main_Buttons_Panel;
         private System.Windows.Forms.Button SaveImg_btn;
@@ -416,6 +428,9 @@ namespace ImageEditor
         private System.Windows.Forms.Panel DropZone2;
         private System.Windows.Forms.Label TitleDrop2;
         private System.Windows.Forms.Button ClearDropZone_btn;
+        private System.Windows.Forms.ImageList ImageList;
+        private System.Windows.Forms.Label Access_compress_lbl;
+        private System.Windows.Forms.PictureBox PictureBox;
     }
 }
 
